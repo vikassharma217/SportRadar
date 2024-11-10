@@ -1,39 +1,51 @@
-document.addEventListener('DOMContentLoaded', function()  {
+document.addEventListener('DOMContentLoaded', function() {
+    // Select necessary elements
+    const dayLabelsContainer = document.querySelector('.day-labels'); 
+    const calendarGrid = document.querySelector('.calendar-grid');
+    const currentDateDisplay = document.getElementById('current-date');
 
-// get the calender grid element from _HMTL 
-const calendarGrid = document.querySelector('.calendar-grid');
+    // Check that the calendar grid is found
+    if (!calendarGrid) {
+        console.error("Error: .calendar-grid element not found");
+        return;
+    }
 
-// ensure the calender grdi element found
-if (!calendarGrid) {
-    console.error("Error: . calendar-grid element not found");
-    return;
-}
+    // Display the full current date in the top-right
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const currentWeekday = currentDate.toLocaleString('en-US', { weekday: 'long' });
+    const currentMonthName = currentDate.toLocaleString('en-US', { month: 'long' });
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth(); // month is zero-indexed (0 = Jan)
 
-// get the current data details
-const  currentDate = new Date();
-const currentYear = currentDate.getFullYear();
-const currentMonth  = currentDate.getMonth(); // month indexed start with zero (0 = Jan)
+    // Update the current date display
+    currentDateDisplay.textContent = `${currentWeekday}, ${currentMonthName} ${currentDay}, ${currentYear}`;
 
-// calculate the first day of the month & num of days in the month
-const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay(); // zero indexed
-const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // last day of month gives totatl days
+    // Add day-of-week labels to dayLabelsContainer
+    const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    dayLabels.forEach(day => {
+        const dayLabel = document.createElement('div');
+        dayLabel.classList.add('day-label');
+        dayLabel.textContent = day;
+        dayLabelsContainer.appendChild(dayLabel);
+    });
 
-// for testinf purpose only
-//console.log("First day of the month:", firstDayOfMonth);
-//console.log("Total days in the month:", daysInMonth);
+    // Calculate the first day of the month & number of days in the month
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-// Add empty cells to align the first day of the month correctly
-for (let i = 0; i < firstDayOfMonth; i++) {
-    const emptyCell = document.createElement('div');
-    emptyCell.classList.add('empty'); // Assigns an 'empty' class for styling if needed
-    calendarGrid.appendChild(emptyCell);
-}
+    // Add empty cells to align the first day of the month correctly
+    for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.classList.add('empty');
+        calendarGrid.appendChild(emptyCell);
+    }
 
-// add numberd cells for each day of the current month
-for (let day = 1; day <= daysInMonth; day++) {
-    const dayCell = document.createElement('div'); // create a div for each day
-    dayCell.textContent = day;  // add the day number as the cell content
-    dayCell.classList.add('day'); // assigns a 'day class for styling
-    calendarGrid.appendChild(dayCell);
+    // Add numbered cells for each day of the current month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.textContent = day;
+        dayCell.classList.add('day');
+        calendarGrid.appendChild(dayCell);
     }
 });

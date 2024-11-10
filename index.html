@@ -13,23 +13,24 @@
             <li><a href="#calendar">Calendar</a></li>
             <li><a href="#add-event">Add Event</a></li>
         </ul>
+        <div id="current-date" class="date-display"></div> <!-- Top right date display -->
+  
     </nav>
 
     <!-- Calendar Section -->
     <section id="calendar">
         <h2>Event Calendar</h2>
-        <div class="calendar-grid">
-        </div>
+        <div class="day-labels"></div> <!-- Weekday labels container -->
+        <div class="calendar-grid"></div> <!-- Calendar days grid -->
     </section>
-    <script src="scripts/calendar.js"></script>
-
+    
     <!-- Event Detail Section -->
     <section id="event-detail">
         <h2>Event Details</h2>
         <p>Select an event from the calendar to see details here.</p>
         <!-- Placeholder for event details -->
     </section>
-
+    
     <!-- Add Event Form Section (initially hidden) -->
     <section id="add-event" style="display: none;">
         <h2>Add New Event</h2>
@@ -37,7 +38,8 @@
             <!-- Placeholder for form inputs -->
         </form>
     </section>
-
+    
+    <script src="scripts/calendar.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +12,9 @@ body {
 
 /* Navigation Bar Styling */
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -27,6 +30,12 @@ nav ul li a {
     font-weight: bold;
 }
 
+.date-display {
+    font-size: 1em;
+    font-weight: bold;
+    color: #555;
+}
+
 /* Section Styling */
 section {
     margin-bottom: 30px;
@@ -34,6 +43,14 @@ section {
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
+}
+
+/* Day labels container styling */
+.day-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
 /* Calendar Grid Styling */
@@ -44,13 +61,34 @@ section {
     margin-top: 15px;
 }
 
-/* Placeholder styling for each calendar cell */
-.calendar-grid div {
-    height: 80px;
+/* Day label styling */
+.day-label {
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    color: #555;
     background-color: #e6e6e6;
+    border-radius: 4px;
+    height: 40px;
+}
+
+/* Day cell styling */
+.day {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Placeholder styling for empty cells */
+.empty {
+    background-color: #e6e6e6;
+    height: 80px;
     border-radius: 5px;
-    color: #666;
 }
