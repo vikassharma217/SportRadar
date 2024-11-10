@@ -1,4 +1,4 @@
-/* Reset default styles */
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +30,7 @@ nav ul li a {
     font-weight: bold;
 }
 
+
 .date-display {
     font-size: 1em;
     font-weight: bold;
@@ -53,12 +54,14 @@ section {
     margin-bottom: 10px;
 }
 
-/* Calendar Grid Styling */
+/* Calendar grid styling */
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
-    gap: 10px;
-    margin-top: 15px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
 }
 
 /* Day label styling */
@@ -84,11 +87,22 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Placeholder styling for empty cells */
-.empty {
-    background-color: #e6e6e6;
-    height: 80px;
-    border-radius: 5px;
+/* Highlight current day */
+.current-day {
+    background-color: #d1e7ff; /* Light blue background for current day */
+    border: 2px solid #007bff; /* Darker blue border */
+}
+
+/* Placeholder style for event days */
+.event-day {
+    background-color: #ffebcd; /* Light beige as placeholder for event days */
+    border: 2px solid #ffa500; /* Orange border */
+}
+/* Hover effect for days */
+.day:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
 }

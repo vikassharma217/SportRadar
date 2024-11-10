@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dayLabelsContainer = document.querySelector('.day-labels'); 
     const calendarGrid = document.querySelector('.calendar-grid');
     const currentDateDisplay = document.getElementById('current-date');
+    const eventDetailSection = document.getElementById('event-detail');
 
     // Check that the calendar grid is found
     if (!calendarGrid) {
@@ -41,11 +42,29 @@ document.addEventListener('DOMContentLoaded', function() {
         calendarGrid.appendChild(emptyCell);
     }
 
+    // Placeholder event dates for styling
+    const placeholderEvents = [
+        `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-18`,
+        `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-23`
+    ];
+
     // Add numbered cells for each day of the current month
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCell = document.createElement('div');
         dayCell.textContent = day;
         dayCell.classList.add('day');
+
+        // Apply .current-day class for today's date
+        if (day === currentDay) {
+            dayCell.classList.add('current-day');
+        }
+
+        // Apply .event-day class as a placeholder for events
+        const eventDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        if (placeholderEvents.includes(eventDate)) {
+            dayCell.classList.add('event-day');
+        }
+
         calendarGrid.appendChild(dayCell);
     }
 });

@@ -61,6 +61,7 @@ Tasks:
         Using calendar.js, dynamically create a grid for the current month.
         Add empty cells at the beginning to align the first day of the month with the correct weekday.
         Add cells for each day of the month, with each cell labeled with its corresponding day number.
+        ADD ON: weekdays and current date feature added
 
     Add Basic Styling for the Calendar:
         Update styles.css to give the calendar a clean and organized look.
