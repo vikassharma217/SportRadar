@@ -42,3 +42,44 @@ Tasks:
     Document Progress:
         Update README.md with a brief note on the initial setup.
         Document the completion of each task in this sprint backlog in approach.md.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Sprint 2: Static Calendar View (Grid for Days)
+
+Objective: Create a monthly calendar view that displays the days of the current month in a grid format. This view will serve as the foundation for adding events and interactions in later sprints.
+Tasks:
+
+    Calculate Days in the Current Month:
+        Write JavaScript logic to determine:
+            The number of days in the current month.
+            The day of the week on which the month starts (to align days correctly on the grid).
+
+    Dynamically Generate the Calendar Grid:
+        Using calendar.js, dynamically create a grid for the current month.
+        Add empty cells at the beginning to align the first day of the month with the correct weekday.
+        Add cells for each day of the month, with each cell labeled with its corresponding day number.
+
+    Add Basic Styling for the Calendar:
+        Update styles.css to give the calendar a clean and organized look.
+        Style the .calendar-grid as a 7-column grid (one column for each day of the week).
+        Style the day cells to display day numbers clearly, with background colors and borders for better visibility.
+
+    Verify Calendar Layout:
+        Test the calendar in the browser to ensure:
+            Days are correctly aligned to the first day of the current month.
+            Each day displays properly in its cell.
+            The overall structure resembles a calendar grid.
+
+    Document Progress:
+        In the README.md file, add a note about the completion of the static calendar view.
+        In approach.md, document any challenges encountered in generating the calendar dynamically, as well as solutions applied.
+
+    Commit and Push:
+        Commit changes to GitHub with a clear message indicating the addition of the dynamic calendar grid.
+
+Expected Outcome:
+
+By the end of Sprint 2, we should have a visually structured calendar grid that displays the current month. This will provide a base for adding event data in Sprint 3.
