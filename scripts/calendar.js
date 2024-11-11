@@ -53,3 +53,24 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error("Failed to load events data:", error));
 });
+
+
+// Function to dynamically add a new event to the calendar
+function addEventToCalendar(event) {
+    const eventDate = new Date(event.dateVenue);
+    const eventDay = eventDate.getDate();
+
+    // Locate the specific day cell in the calendar grid
+    const dayCells = document.querySelectorAll('.calendar-grid .day');
+    const dayCell = Array.from(dayCells).find(cell => parseInt(cell.textContent) === eventDay);
+
+    if (dayCell) {
+        dayCell.classList.add('event-day');
+        dayCell.addEventListener('click', () => showEventDetails(event));
+    } else {
+        console.error(`Error: Unable to find day cell for date ${event.dateVenue}`);
+    }
+}
+
+// Export the function to allow form.js to add new events dynamically
+export { addEventToCalendar };

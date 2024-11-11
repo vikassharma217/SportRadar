@@ -132,3 +132,29 @@ TASK:
         - add close button withing th EVENT DETAIL section to , close the event detail TAB and bring user back to calendar grid
     Documentation , Testing and push
         - update documnetation , test updated features and push the code to github.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sprint 5: Create a form allowing users to add new events dynamically.
+
+TASK:
+    Create ADD Event form
+        - Design a form in HTML within add event section
+        - Include reuired input fileds (refer JSON file for example)
+        - add submiit button for form
+    
+    Form Validation
+        - Implememt basic validation to ensure all fileds are filled out
+        - display message if any required field is missing
+
+    Add new event to calendar
+        - impelment to view these new event to be added in calender grid 
+        - ensure these event are visible in event detail view on clicking the event date
+        - integrate with existing showEventDetails fucntion to handle displying dynamice event
+    
+    Form reset
+        - clear form field after the event is succesfull added
+        - propmt for event added succesfully
+    
+    Documentation & Testing
+        . test all featured, add required documnetation and push to github

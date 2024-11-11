@@ -106,3 +106,30 @@ section {
     background-color: #f1f1f1;
     color: #007bff;
 }
+
+/* Style for the Close Button */
+#close-detail {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+#close-detail:hover {
+    color: #f44336; /* Red color on hover */
+}
+
+#event-detail {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}

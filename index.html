@@ -26,10 +26,9 @@
     
      <!-- Event Detail Section -->
      <section id="event-detail" style="display: none;"> <!-- Initially hidden -->
-        <button id="close-detail">Close</button> <!-- Close button -->
-        <h2>Event Details</h2>
+        <button id="close-detail">X</button> <!-- Close button -->
         <div id="event-info">
-            <p>Select an event from the calendar to see details here.</p>
+            <!--Select an event from the calendar to see details here.-->
             <!-- Event details will be populated here dynamically -->
         </div>
     </section>
@@ -38,9 +37,26 @@
     <section id="add-event" style="display: none;">
         <h2>Add New Event</h2>
         <form id="event-form">
-            <!-- Placeholder for form inputs -->
+            <label for="event-date">Date:</label>
+            <input type="date" id="event-date" name="event-date" required>
+    
+            <label for="event-time">Time:</label>
+            <input type="time" id="event-time" name="event-time" required>
+    
+            <label for="sport">Sport:</label>
+            <input type="text" id="sport" name="sport" placeholder="e.g., Football" required>
+    
+            <label for="home-team">Home Team:</label>
+            <input type="text" id="home-team" name="home-team" required>
+    
+            <label for="away-team">Away Team:</label>
+            <input type="text" id="away-team" name="away-team" required>
+    
+            <button type="submit" id="add-event-btn">Add Event</button>
         </form>
+        <p id="form-feedback" style="display: none;"></p> <!-- Feedback for user -->
     </section>
+    
     
     <script type="module" src="scripts/calendar.js"></script>
     <script type="module" src="scripts/event.js"></script>
