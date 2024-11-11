@@ -24,11 +24,14 @@
         <div class="calendar-grid"></div> <!-- Calendar days grid -->
     </section>
     
-    <!-- Event Detail Section -->
-    <section id="event-detail">
+     <!-- Event Detail Section -->
+     <section id="event-detail" style="display: none;"> <!-- Initially hidden -->
+        <button id="close-detail">Close</button> <!-- Close button -->
         <h2>Event Details</h2>
-        <p>Select an event from the calendar to see details here.</p>
-        <!-- Placeholder for event details -->
+        <div id="event-info">
+            <p>Select an event from the calendar to see details here.</p>
+            <!-- Event details will be populated here dynamically -->
+        </div>
     </section>
     
     <!-- Add Event Form Section (initially hidden) -->
@@ -39,7 +42,10 @@
         </form>
     </section>
     
-    <script src="scripts/calendar.js"></script>
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/calendar.js"></script>
+    <script type="module" src="scripts/event.js"></script>
+    <script type="module" src="scripts/form.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+    
 </body>
 </html>

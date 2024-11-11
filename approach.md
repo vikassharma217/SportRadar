@@ -90,7 +90,7 @@ By the end of Sprint 2, we should have a visually structured calendar grid that 
 
  Sprint 3: Integrate the provided JSON data to populate the calendar with event markers.
 
- NOTE: I have updated the provided json file and added 2 sample events from subject for cuurent month to pupullate them on calendar.
+ NOTE: I have updated the provided json file and added 2 sample events from subject for cuurent month to popullate them on calendar.
 
 TASK:
     Fetch JSON data;
@@ -111,3 +111,24 @@ TASK:
     
     Documentation
         update the README.md and approach.md with appropriate action and push to updated
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sprint 4: Implement a detail view for events, accessible by clicking on event markers in the calendar.
+
+TASK:
+    Set up Click listner for Event Days
+        - Add JS event listner to detect clicks on highlighted event days.
+
+    Load Event Detail on Click
+        - on click , fetch the corresponding details from JSON data and prepare it for display.
+        - Populate the EVENT DETAIL section with all availabel information (date, time etc.)
+
+    Smooth Scroll to Event Details section
+        - implement a smoothe scroll effect to bring the EVENT DETAIL section into centre view
+        
+    Add close button:
+        - add close button withing th EVENT DETAIL section to , close the event detail TAB and bring user back to calendar grid
+    Documentation , Testing and push
+        - update documnetation , test updated features and push the code to github.
