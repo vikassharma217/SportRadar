@@ -17,7 +17,22 @@ Getting Started
     cd SportRadar
 
     Open the Project:
-        You can open index.html directly in a browser or use a live server extension to view changes in real-time.
+        Using VS Code Live Server Extension (Recommended)
+            Install the Live Server extension in Visual Studio Code.
+            Open the index.html file in VS Code.
+            Right-click on index.html and select Open with Live Server.
+            This will start a local development server and open the project in your default browser, allowing you to see changes in real-time.
+
+        Using Python’s Built-in HTTP Server
+            This option works if you have Python installed.
+            In the terminal, navigate to the project folder:
+                        cd SportRadar
+            Start a simple HTTP server using one of the following commands:
+            For Python 3:
+                        python3 -m http.server 8000
+            For Python 2:
+                        python -m SimpleHTTPServer 8000
+            Open your browser and go to http://localhost:8000/index.html to view the project.
 
 File Structure
 

@@ -84,3 +84,30 @@ Tasks:
 Expected Outcome:
 
 By the end of Sprint 2, we should have a visually structured calendar grid that displays the current month. This will provide a base for adding event data in Sprint 3.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ Sprint 3: Integrate the provided JSON data to populate the calendar with event markers.
+
+ NOTE: I have updated the provided json file and added 2 sample events from subject for cuurent month to pupullate them on calendar.
+
+TASK:
+    Fetch JSON data;
+        Implement a function in calendar.js to load the JSON data of sports event.
+        Implement the parsing logic to parse the JSON data to access each event.
+
+    Filter event by date (check for current month and year)
+        IDentify the current month and year dynamically using JS.
+        Filter the event for JSON data to include cuurent months event.
+
+    Mark Event day on Calendar:
+        Fot each day cell in calendar grid, check if an event is scheduled on that fate.
+        Apply a unique style for event day.
+        Set up placeholder for click event day to handle event detail page
+
+    Verfiy event marker
+        Test the calendar to ensure that evenet day are correctly marked
+    
+    Documentation
+        update the README.md and approach.md with appropriate action and push to updated

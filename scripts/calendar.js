@@ -42,29 +42,57 @@ document.addEventListener('DOMContentLoaded', function() {
         calendarGrid.appendChild(emptyCell);
     }
 
-    // Placeholder event dates for styling
-    const placeholderEvents = [
-        `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-18`,
-        `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-23`
-    ];
+    // Fetch JSON data and populate the calendar with events
+    fetch('../data/sportData.json')
+        .then(response => response.json())
+        .then(data => {
+            const events = data.data;
+            const eventDates = events
+                .filter(event => {
+                    const eventDate = new Date(event.dateVenue);
+                    return (
+                        eventDate.getFullYear() === currentYear &&
+                        eventDate.getMonth() === currentMonth
+                    );
+                })
+                .map(event => ({
+                    date: new Date(event.dateVenue).getDate(),
+                    details: event
+                }));
 
-    // Add numbered cells for each day of the current month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayCell = document.createElement('div');
-        dayCell.textContent = day;
-        dayCell.classList.add('day');
+            // Add numbered cells for each day of the current month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.textContent = day;
+                dayCell.classList.add('day');
 
-        // Apply .current-day class for today's date
-        if (day === currentDay) {
-            dayCell.classList.add('current-day');
-        }
+                // Highlight the current day
+                if (day === currentDay) {
+                    dayCell.classList.add('current-day');
+                }
 
-        // Apply .event-day class as a placeholder for events
-        const eventDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        if (placeholderEvents.includes(eventDate)) {
-            dayCell.classList.add('event-day');
-        }
+                // Check if the day has an event and apply .event-day style
+                const event = eventDates.find(e => e.date === day);
+                if (event) {
+                    dayCell.classList.add('event-day');
+                    dayCell.addEventListener('click', () => showEventDetails(event.details));
+                }
 
-        calendarGrid.appendChild(dayCell);
+                calendarGrid.appendChild(dayCell);
+            }
+        })
+        .catch(error => console.error("Failed to load events data:", error));
+
+    // Function to display event details
+    function showEventDetails(event) {
+        eventDetailSection.innerHTML = `
+            <h2>Event Details</h2>
+            <p><strong>Date:</strong> ${event.dateVenue}</p>
+            <p><strong>Time:</strong> ${event.timeVenueUTC}</p>
+            <p><strong>Home Team:</strong> ${event.homeTeam ? event.homeTeam.name : "TBD"}</p>
+            <p><strong>Away Team:</strong> ${event.awayTeam ? event.awayTeam.name : "TBD"}</p>
+            <p><strong>Stage:</strong> ${event.stage.name}</p>
+            <p><strong>Competition:</strong> ${event.originCompetitionName}</p>
+        `;
     }
 });
