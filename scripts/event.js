@@ -29,11 +29,17 @@ function showEventDetails(events) {
         const stage = event.stage ? event.stage.name : "Unknown Stage";
         const competition = event.originCompetitionName || "Unknown Competition";
 
-        // Event header with event number and teams
-        const eventHeader = document.createElement('h3');
-        eventHeader.textContent = `Event ${index + 1} - ${homeTeamName} vs. ${awayTeamName}`;
-        eventHeader.classList.add('event-header'); // CSS class for the event header
-        eventContainer.appendChild(eventHeader);
+        // // Event header with event number and teams
+        // const eventHeader = document.createElement('h3');
+        // eventHeader.textContent = `Event ${index + 1} - ${homeTeamName} vs. ${awayTeamName}`;
+        // eventHeader.classList.add('event-header'); // CSS class for the event header
+        // eventContainer.appendChild(eventHeader);
+
+         // Display "VS" format for teams
+         const vsHeader = document.createElement('div');
+         vsHeader.classList.add('vs-header');
+         vsHeader.innerHTML = `<span class="home-team">${homeTeamName}</span> <span class="vs-text">vs</span> <span class="away-team">${awayTeamName}</span>`;
+         eventContainer.appendChild(vsHeader);
 
         // Event detail content
         const eventContent = document.createElement('div');
