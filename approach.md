@@ -9,7 +9,7 @@ Overall Plan
     Sprint 4: Implement a detail view for events, accessible by clicking on event markers in the calendar.
     Sprint 5: Create a form allowing users to add new events dynamically.
     Sprint 6: Ensure responsive design, adapting layouts for mobile, tablet, and desktop views.
-    Sprint 7: Add optional features like filters, animations, and local storage for session persistence.
+    Sprint 7: Add optional features like filters, animations, and local storage for session persistence and testing.
 
 Each sprint includes a checklist for tracking progress, with documentation of challenges and solutions to support learning and interview preparation.
 
@@ -186,3 +186,20 @@ TASK:
 
     Document Changes
         -Record changes in approach.md and commit updates with a message like “Added responsive design for calendar and event sections.”
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ Sprint 7: Add optional features like filters, animations, and local storage for session persistence.
+
+Additional feature: 
+
+Add Event Form:
+    - truncatinate the team name, sport name to 10 char only, (repalce all char after 9th position with .) 
+
+Event detail:
+    - add styling to show the  vs format ( HOMETEAM   vs  AWAYTEAM ) with all other detail below them
+    
+Homepage:
+    - add SportRadar logo from subject in background in fainted 
+
