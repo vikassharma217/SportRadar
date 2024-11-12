@@ -2,66 +2,66 @@ Task 1 – Calendar View
     •Objective: Implement a calendar view that displays sports events.
 •Instructions:
 •
-    o   Create a calendar interface for the current month.
-    o   Display the days of the month in a grid format.
+    o   Create a calendar interface for the current month.   --done--
+    o   Display the days of the month in a grid format.       --done--
     o   Indicate days that have scheduled sports events. This can be as simple as a dot or marker
-            on the day.
+            on the day.    --done--
     o   (Optional) Show brief information about the events on the calendar (e.g., event name on
-            the day cell). 
+            the day cell). --skip--
             
     Sample Events to Include (you can leverage the json file shared to get events):
-        o   Sat., 18.07.2019, 18:30, Football, Salzburg vs. Sturm
-        o   Sun., 23.10.2019, 09:45, Ice Hockey, KAC vs. Capitals
+        o   Sat., 18.07.2019, 18:30, Football, Salzburg vs. Sturm  --done--
+        o   Sun., 23.10.2019, 09:45, Ice Hockey, KAC vs. Capitals  --done-- 
         
 Task 2 – Event Detail Page
-    •Objective: Provide a way to view full details of a specific event.
+    •Objective: Provide a way to view full details of a specific event.  --done--
 •Instructions:
     o   Implement functionality so that when a user clicks on an event marker on the calendar,
-            they are taken to a detail page.
+            they are taken to a detail page.  --done--
     o   The detail page should display all relevant information about the event, such as date,
-            time, sport, teams/participants, and any other details you consider important.
+            time, sport, teams/participants, and any other details you consider important. --done--
 
 Task 3 – Add Event Functionality
-    •Objective: Allow users to add new events during runtime.
+    •Objective: Allow users to add new events during runtime.  --done--
     •Instructions:
     o   Create a form where users can input details for a new event (e.g., date, time, sport,
-            teams/participants).
-    o   Implement the functionality to add the new event to the calendar view.
+            teams/participants).  --done--
+    o   Implement the functionality to add the new event to the calendar view.  --done--
     o   Note: It is not required to save the data persistently (e.g., no need to use a database or
-        local storage). The new event can exist only during the current session (runtime).
+        local storage). The new event can exist only during the current session (runtime).  --done--
 
 Task 4 – Responsiveness
-    •Objective: Ensure the site is fully responsive on mobile and tablet devices.
+    •Objective: Ensure the site is fully responsive on mobile and tablet devices. --done--
     •Instructions:
     o   Use responsive design techniques to make sure the calendar view and all pages adapt to
-            different screen sizes.
+            different screen sizes.  --done--
     o   Test your site on various screen widths to ensure usability on mobile phones, tablets,
-            and desktops.
-    o   Pay attention to layout, readability, and touch interactions on smaller screens.
+            and desktops.  --done--
+    o   Pay attention to layout, readability, and touch interactions on smaller screens. --done--
 
 Task 5 – Navigation
-    •Objective: Create a simple navigation system within your application.
+    •Objective: Create a simple navigation system within your application.   --done--
     •Instructions:
     o   Implement a navigation bar or menu that allows users to switch between the calendar
-            overview and the "Add Event" page.
-    o   Ensure the navigation is accessible from all pages.
-    o   The design can be minimal; focus on functionality.
+            overview and the "Add Event" page.  --done--
+    o   Ensure the navigation is accessible from all pages.  --done--
+    o   The design can be minimal; focus on functionality.  --done--
 
 Additional Features (Optional)
 •
-Filters:
+Filters:  --skip--
 o
 •
 •
 Styling and Enhancements:
-    o   Add CSS styling to improve the visual appeal of your application.
-    o   Use animations or transitions for a better user experience.
+    o   Add CSS styling to improve the visual appeal of your application. --done--
+    o   Use animations or transitions for a better user experience.  --done--
             Persistent Storage:
     o•
         Implement filters to allow users to view events based on specific criteria (e.g., by sport,
 date range).
-Store events using local storage or any other method to retain data between sessions.
+Store events using local storage or any other method to retain data between sessions.  --skip--
 
 Testing:
-    o   Write tests to verify that your code works as expected.
-    o   Use any testing framework or method you are comfortable with.
+    o   Write tests to verify that your code works as expected.  --pending--
+    o   Use any testing framework or method you are comfortable with.   --pending--
