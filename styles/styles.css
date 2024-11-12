@@ -30,7 +30,6 @@ nav ul li a {
     font-weight: bold;
 }
 
-
 .date-display {
     font-size: 1em;
     font-weight: bold;
@@ -92,15 +91,16 @@ section {
 
 /* Highlight current day */
 .current-day {
-    background-color: #d1e7ff; /* Light blue background for current day */
-    border: 2px solid #007bff; /* Darker blue border */
+    background-color: #d1e7ff;
+    border: 2px solid #007bff;
 }
 
 /* Placeholder style for event days */
 .event-day {
-    background-color: #ffebcd; /* Light beige as placeholder for event days */
-    border: 2px solid #ffa500; /* Orange border */
+    background-color: #ffebcd;
+    border: 2px solid #ffa500;
 }
+
 /* Hover effect for days */
 .day:hover {
     background-color: #f1f1f1;
@@ -121,7 +121,7 @@ section {
 }
 
 #close-detail:hover {
-    color: #f44336; /* Red color on hover */
+    color: #f44336;
 }
 
 #event-detail {
@@ -133,7 +133,6 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
-
 
 /* Style for individual event blocks */
 .event-container {
@@ -153,4 +152,58 @@ section {
 /* Style for event content */
 .event-content {
     padding-left: 10px;
+}
+
+/* Tablet Styles */
+@media (max-width: 900px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.9rem;
+    }
+
+    #event-detail, #add-event {
+        width: 90%;
+        margin: 10px auto;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    /* Adjust calendar layout to start with Monday for European standards */
+    .day-labels {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.75rem;
+        gap: 3px;
+    }
+
+    .day-label, .day {
+        font-size: 0.8em;
+        height: 50px;
+    }
+
+    /* Center navigation items for smaller screens */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #event-detail, #add-event {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #close-detail {
+        top: 5px;
+        right: 5px;
+        font-size: 1.2rem;
+    }
 }
