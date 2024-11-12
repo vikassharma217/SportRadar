@@ -158,3 +158,8 @@ TASK:
     
     Documentation & Testing
         . test all featured, add required documnetation and push to github
+
+    Additional task:
+        - Added to feature display multiple event on same date.
+        - Multiple events displayed in diffrent blocks.
+        - Events are sorted and displayed in chronological order.
