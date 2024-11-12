@@ -159,7 +159,30 @@ TASK:
     Documentation & Testing
         . test all featured, add required documnetation and push to github
 
-    Additional task:
+    Additional task done:
         - Added to feature display multiple event on same date.
         - Multiple events displayed in diffrent blocks.
         - Events are sorted and displayed in chronological order.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+ Sprint 6: Ensure responsive design, adapting layouts for mobile, tablet, and desktop views.
+
+ TAKS:
+    Define Breakpoints
+        - Set breakpoints for mobile (max-width: 600px), tablet (max-width: 900px), and desktop (above 900px).
+
+    Responsive Calendar Grid Layout
+        - Adjust font sizes, padding, and layout for mobile and tablet views to ensure the calendar grid displays without overflow.
+    
+    Responsive Event Details Section
+        -Make the event details section adapt to smaller screens by adjusting its width, padding, and font sizes.
+        -Ensure the close button remains accessible and easy to use on all screen sizes.
+    
+    Responsive Navigation
+        -Stack navigation links vertically on mobile if needed for better accessibility.
+
+    Test Responsiveness
+        -Test the design on different screen sizes (mobile, tablet, desktop) and adjust as needed.
+
+    Document Changes
+        -Record changes in approach.md and commit updates with a message like “Added responsive design for calendar and event sections.”
