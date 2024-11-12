@@ -236,6 +236,29 @@ section {
     text-align: left;
 }
 
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #cedbeb;
+    color: #000000;
+}
+
+.calendar-header button:hover {
+    background-color: #73a6e6;
+}
+
+
+
 /* Tablet Styles */
 @media (max-width: 900px) {
     nav ul {

@@ -1,29 +1,24 @@
 import { showEventDetails } from './event.js';
 
-const eventsByDate = {};
+const eventsByDate = {}; // Keep as an object for storing events by date
+let currentDate = new Date(); // Keep track of the selected month and year
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const calendarGrid = document.querySelector('.calendar-grid');
     const currentDateDisplay = document.getElementById('current-date');
-    const dayLabelsContainer = document.querySelector('.day-labels'); // Ensure weekday labels are set
-    
-    if (!calendarGrid) {
-        console.error("Error: .calendar-grid element not found");
+    const dayLabelsContainer = document.querySelector('.day-labels');
+    const prevMonthButton = document.getElementById('prev-month');
+    const nextMonthButton = document.getElementById('next-month');
+
+    if (!calendarGrid || !currentDateDisplay) {
+        console.error("Error: Required calendar elements not found");
         return;
     }
-
-    // Set and display the current date
-    const currentDate = new Date();
-    const currentDay = currentDate.getDate();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-
-    currentDateDisplay.textContent = currentDate.toDateString();
 
     // Set weekday labels to start from Monday and populate dayLabelsContainer
     const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     if (dayLabelsContainer) {
-        dayLabelsContainer.innerHTML = ''; // Clear existing labels
+        dayLabelsContainer.innerHTML = '';
         dayLabels.forEach(day => {
             const dayLabel = document.createElement('div');
             dayLabel.classList.add('day-label');
@@ -32,76 +27,103 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Populate the calendar grid, starting the week on Monday
-    const firstDayOfMonth = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7; // Adjust Sunday to Monday-based index
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    // Function to update and display the calendar for the selected month
+    function updateCalendar() {
+        calendarGrid.innerHTML = ''; // Clear current calendar
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+        currentDateDisplay.textContent = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 
-    for (let i = 0; i < firstDayOfMonth; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.classList.add('empty');
-        calendarGrid.appendChild(emptyCell);
+        // Adjust day of week to start on Monday
+        const firstDayOfMonth = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+        // Add empty cells for alignment based on the first day
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('empty');
+            calendarGrid.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.textContent = day;
+            dayCell.classList.add('day');
+
+            // Highlight the current day if it matches today's date
+            const isToday = currentYear === new Date().getFullYear() &&
+                            currentMonth === new Date().getMonth() &&
+                            day === new Date().getDate();
+            if (isToday) {
+                dayCell.classList.add('current-day');
+            }
+
+            // Format date key for events storage and retrieval
+            const eventKey = `${currentYear}-${currentMonth + 1}-${day}`;
+
+            // Apply event-day style if events exist for the day
+            if (eventsByDate[eventKey]) {
+                dayCell.classList.add('event-day');
+                dayCell.addEventListener('click', () => showEventDetails(eventsByDate[eventKey]));
+            }
+
+            calendarGrid.appendChild(dayCell);
+        }
     }
 
-    fetch('../data/sportData.json')
-        .then(response => response.json())
-        .then(data => {
-            data.data.forEach(event => {
-                const eventDate = new Date(event.dateVenue);
-                const eventDay = eventDate.getDate();
+    // Fetch and parse events data, then populate eventsByDate for the selected month
+    function loadEvents() {
+        fetch('./data/sportData.json')
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing events to reload
+                Object.keys(eventsByDate).forEach(key => delete eventsByDate[key]);
 
-                // Ensure event is within the current month and year
-                if (eventDate.getFullYear() === currentYear && eventDate.getMonth() === currentMonth) {    
-                    // Initialize array if no events exist for this date
-                    if (!eventsByDate[eventDay]) {
-                        eventsByDate[eventDay] = [];
+                data.data.forEach(event => {
+                    const eventDate = new Date(event.dateVenue);
+                    const eventKey = `${eventDate.getFullYear()}-${eventDate.getMonth() + 1}-${eventDate.getDate()}`;
+
+                    if (!eventsByDate[eventKey]) {
+                        eventsByDate[eventKey] = [];
                     }
-                    eventsByDate[eventDay].push(event); // Add event to the date
-                }
-            });
+                    eventsByDate[eventKey].push(event);
+                });
 
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayCell = document.createElement('div');
-                dayCell.textContent = day;
-                dayCell.classList.add('day');
+                updateCalendar(); // Refresh calendar after loading events
+            })
+            .catch(error => console.error("Failed to load events data:", error));
+    }
 
-                if (day === currentDay) dayCell.classList.add('current-day');
+    // Event listeners for navigating months
+    prevMonthButton.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        loadEvents(); // Reload events and refresh calendar for the new month
+    });
 
-                // If events exist for this day, apply event-day style and add click event
-                if (eventsByDate[day]) {
-                    dayCell.classList.add('event-day');
-                    dayCell.addEventListener('click', () => showEventDetails(eventsByDate[day]));
-                }
+    nextMonthButton.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        loadEvents(); // Reload events and refresh calendar for the new month
+    });
 
-                calendarGrid.appendChild(dayCell);
-            }
-        })
-        .catch(error => console.error("Failed to load events data:", error));
+    // Initialize calendar with the current month and events
+    loadEvents();
 });
-
 
 // Function to dynamically add a new event to the calendar
 function addEventToCalendar(event) {
     const eventDate = new Date(event.dateVenue);
-    const eventDay = eventDate.getDate();
+    const eventKey = `${eventDate.getFullYear()}-${eventDate.getMonth() + 1}-${eventDate.getDate()}`;
 
-    // Update calendar grid styling
-    const dayCells = document.querySelectorAll('.calendar-grid .day');
-    const dayCell = Array.from(dayCells).find(cell => parseInt(cell.textContent) === eventDay);
+    if (!eventsByDate[eventKey]) {
+        eventsByDate[eventKey] = [];
+    }
+    eventsByDate[eventKey].push(event);
 
-    if (dayCell) {
-        dayCell.classList.add('event-day');
-
-        // Add event to eventsByDate if it doesn't exist
-        if (!eventsByDate[eventDay]) {
-            eventsByDate[eventDay] = [];
-        }
-        eventsByDate[eventDay].push(event);
-
-        dayCell.addEventListener('click', () => showEventDetails(eventsByDate[eventDay]));
-    } else {
-        console.error(`Error: Unable to find day cell for date ${event.dateVenue}`);
+    // Update the grid styling if the event matches the displayed month and year
+    if (eventDate.getFullYear() === currentDate.getFullYear() && eventDate.getMonth() === currentDate.getMonth()) {
+        updateCalendar(); // Refresh to display the newly added event
     }
 }
 
-// Export the function to allow form.js to add new events dynamically
+// Export function to allow form.js to add new events dynamically
 export { addEventToCalendar };

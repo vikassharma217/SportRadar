@@ -87,7 +87,7 @@
             "season": 2024,
             "status": "played",
             "timeVenueUTC": "00:00:00",
-            "dateVenue": "2024-01-03",
+            "dateVenue": "2024-11-03",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Shabab",
@@ -214,7 +214,7 @@
             "season": 2024,
             "status": "scheduled",
             "timeVenueUTC": "08:00:00",
-            "dateVenue": "2024-01-04",
+            "dateVenue": "2024-11-04",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Faisaly",
@@ -257,7 +257,7 @@
             "season": 2024,
             "status": "scheduled",
             "timeVenueUTC": "00:00:00",
-            "dateVenue": "2024-01-19",
+            "dateVenue": "2024-11-19",
             "stadium": null,
             "homeTeam": null,
             "awayTeam": {
