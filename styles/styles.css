@@ -8,6 +8,8 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
+    background: linear-gradient(135deg, #f0f0f5 25%, #d9e4f0);
+    min-height: 100vh;
 }
 
 /* Navigation Bar Styling */
@@ -17,8 +19,14 @@ nav {
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
-    border-radius: 8px; /* Rounded corners for nav */
+    border-radius: 8px;
     background-color: #cedbeb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+nav:hover {
+    background-color: #73a6e6;
 }
 
 nav ul {
@@ -62,8 +70,16 @@ section {
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     padding: 10px;
-    background-color: #f3efef;
-    border-radius: 8px;
+    background-color: #f1f1f1;
+    background-image: url('resources/sportRadar.jpeg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 /* Day label styling */
@@ -76,6 +92,11 @@ section {
     border-radius: 8px;
     height: 40px;
 }
+
+.day-label:hover {
+    background-color: #73a6e6;
+}
+
 
 /* Day cell styling */
 .day {
@@ -102,12 +123,29 @@ section {
 .event-day {
     background-color: #ffebcd;
     border: 2px solid #ffa500;
+    animation: pulse 1.5s infinite;
+    transition: transform 0.3s ease;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(255, 165, 0, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+    }
 }
 
 /* Hover effect for days */
 .day:hover {
-    background-color: #f1f1f1;
-    color: #007bff;
+    background-color: #73a6e6;
 }
 
 /* Style for the Close Button */
@@ -148,6 +186,11 @@ section {
     text-align: center;
 }
 
+.event-container:hover {
+    background-color: #e6f7ff;
+    transform: translateY(-3px);
+}
+
 /* Style for VS format team names */
 .event-teams {
     display: flex;
@@ -161,6 +204,7 @@ section {
 .team-name {
     flex: 1;
 }
+
 
 .vs-text {
     margin: 0 10px;
