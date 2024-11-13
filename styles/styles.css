@@ -12,6 +12,11 @@ body {
     min-height: 100vh;
 }
 
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 /* Navigation Bar Styling */
 nav {
     display: flex;
@@ -286,7 +291,6 @@ section {
 
 /* Mobile Styles */
 @media (max-width: 600px) {
-    /* Adjust calendar layout to start with Monday for European standards */
     .day-labels {
         grid-template-columns: repeat(7, 1fr);
     }
