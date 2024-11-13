@@ -1,4 +1,8 @@
-// form.js
+/* form.js
+ This file manages the Add Event form, capturing user input to create new events
+ and adding them to the calendar. It also includes form validation and displays 
+ feedback messages to the user based on submission status. */
+
 
 import { addEventToCalendar } from './calendar.js';
 

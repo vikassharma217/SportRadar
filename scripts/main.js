@@ -1,3 +1,9 @@
+/* main.js
+ This file initializes the main page layout and controls the visibility of different sections, 
+ including the Calendar view and Add Event form. It manages navigation between these sections
+ and sets the default view when the page loads. */
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const calendarSection = document.getElementById('calendar');
     const addEventSection = document.getElementById('add-event');

@@ -1,4 +1,7 @@
-// event.js
+/* event.js
+ This file is responsible for displaying details of selected events on the calendar.
+ It defines functions to display event information and manages the user interface for 
+ individual event details, including a close button to hide event details when finished. */
 
 function showEventDetails(events) {
     const eventDetailSection = document.getElementById('event-detail');
@@ -28,12 +31,6 @@ function showEventDetails(events) {
         const eventTime = event.timeVenueUTC || "Unknown Time";
         const stage = event.stage ? event.stage.name : "Unknown Stage";
         const competition = event.originCompetitionName || "Unknown Competition";
-
-        // // Event header with event number and teams
-        // const eventHeader = document.createElement('h3');
-        // eventHeader.textContent = `Event ${index + 1} - ${homeTeamName} vs. ${awayTeamName}`;
-        // eventHeader.classList.add('event-header'); // CSS class for the event header
-        // eventContainer.appendChild(eventHeader);
 
          // Display "VS" format for teams
          const vsHeader = document.createElement('div');

@@ -1,4 +1,8 @@
-// calendar.js
+/* calendar.js
+ This file handles the display and navigation of the calendar, including rendering days,
+ highlighting events, and managing month navigation. It also includes the logic for adding 
+ new events to the calendar dynamically.*/
+
 
 let inMemoryEvents = []; // global array to hold all events
 
