@@ -21,6 +21,10 @@ Getting Started
             Open the index.html file in VS Code.
             Right-click on index.html and select Open with Live Server.
             This will start a local development server and open the project in your default browser, allowing you to see changes in real-time.
+        
+        Using Git pages:
+            https://vikassharma217.github.io/SportRadar/
+            click on this link.
 
 File Structure
 

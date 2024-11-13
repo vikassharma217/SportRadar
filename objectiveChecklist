@@ -109,8 +109,8 @@ date range).                                                                    
 Store events using local storage or any other method to retain data between sessions.  --skip--
 
 Testing:
-    o   Write tests to verify that your code works as expected.                         --pending--
-    o   Use any testing framework or method you are comfortable with.                   --pending--
+    o   Write tests to verify that your code works as expected.                         --skip--
+    o   Use any testing framework or method you are comfortable with.                   --skip--
 
 
 
