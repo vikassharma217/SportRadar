@@ -1,7 +1,11 @@
+// calendar.js
+
+let inMemoryEvents = []; // global array to hold all events
+
 import { showEventDetails } from './event.js';
 
-const eventsByDate = {}; // Keep as an object for storing events by date
-let currentDate = new Date(); // Keep track of the selected month and year
+const eventsByDate = {}; // Object to store events by date
+let currentDate = new Date(); // Track the selected month and year
 
 // Function to update and display the calendar for the selected month
 function updateCalendar() {
@@ -49,12 +53,48 @@ function updateCalendar() {
     }
 }
 
+// Combine inMemoryEvents with loaded events
+function mergeEvents() {
+    inMemoryEvents.forEach(event => {
+        const eventDate = new Date(event.dateVenue);
+        const eventKey = `${eventDate.getFullYear()}-${eventDate.getMonth() + 1}-${eventDate.getDate()}`;
+        if (!eventsByDate[eventKey]) {
+            eventsByDate[eventKey] = [];
+        }
+        eventsByDate[eventKey].push(event);
+    });
+}
+
+// Load events from JSON and inMemoryEvents
+function loadEvents() {
+    fetch('./data/sportData.json')
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing events to reload
+            Object.keys(eventsByDate).forEach(key => delete eventsByDate[key]);
+
+            data.data.forEach(event => {
+                const eventDate = new Date(event.dateVenue);
+                const eventKey = `${eventDate.getFullYear()}-${eventDate.getMonth() + 1}-${eventDate.getDate()}`;
+                if (!eventsByDate[eventKey]) {
+                    eventsByDate[eventKey] = [];
+                }
+                eventsByDate[eventKey].push(event);
+            });
+
+            // Merge dynamically added events
+            mergeEvents();
+            updateCalendar(); // Refresh calendar after loading events
+        })
+        .catch(error => console.error("Failed to load events data:", error));
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const dayLabelsContainer = document.querySelector('.day-labels');
     const prevMonthButton = document.getElementById('prev-month');
     const nextMonthButton = document.getElementById('next-month');
 
-    // Set weekday labels to start from Monday and populate dayLabelsContainer
+    // Set weekday labels to start from Monday
     const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     if (dayLabelsContainer) {
         dayLabelsContainer.innerHTML = '';
@@ -64,29 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
             dayLabel.textContent = day;
             dayLabelsContainer.appendChild(dayLabel);
         });
-    }
-
-    // Fetch and parse events data, then populate eventsByDate for the selected month
-    function loadEvents() {
-        fetch('./data/sportData.json')
-            .then(response => response.json())
-            .then(data => {
-                // Clear existing events to reload
-                Object.keys(eventsByDate).forEach(key => delete eventsByDate[key]);
-
-                data.data.forEach(event => {
-                    const eventDate = new Date(event.dateVenue);
-                    const eventKey = `${eventDate.getFullYear()}-${eventDate.getMonth() + 1}-${eventDate.getDate()}`;
-
-                    if (!eventsByDate[eventKey]) {
-                        eventsByDate[eventKey] = [];
-                    }
-                    eventsByDate[eventKey].push(event);
-                });
-
-                updateCalendar(); // Refresh calendar after loading events
-            })
-            .catch(error => console.error("Failed to load events data:", error));
     }
 
     // Event listeners for navigating months
@@ -114,11 +131,13 @@ function addEventToCalendar(event) {
     }
     eventsByDate[eventKey].push(event);
 
+    // Add to inMemoryEvents for persistence within session
+    inMemoryEvents.push(event);
+
     // Update the grid styling if the event matches the displayed month and year
     if (eventDate.getFullYear() === currentDate.getFullYear() && eventDate.getMonth() === currentDate.getMonth()) {
         updateCalendar(); // Refresh to display the newly added event
     }
 }
 
-// Export function to allow form.js to add new events dynamically
 export { addEventToCalendar };
