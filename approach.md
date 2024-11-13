@@ -1,7 +1,16 @@
 Project Approach
 
-This project follows a sprint-based approach, with each sprint dedicated to building and refining specific functionalities for a sports event calendar. The focus is on incremental progress, ensuring each core feature is implemented and tested before advancing to the next.
-Overall Plan
+This project is designed to create an interactive sports event calendar that allows users to view, add, and interact with sports events for specific dates. The primary objective is to present event information dynamically, enabling users to easily navigate and access event details for different days and months.
+
+Understanding and Planning
+
+To structure the development process effectively, I employed a Scrum-based approach, dividing the project into manageable sprints. Each sprint is dedicated to implementing and refining specific features, ensuring incremental progress with thorough testing at each stage. This approach promotes flexibility and allows room for continuous improvements, enabling us to address and resolve issues in a timely manner.
+
+The Scrum methodology encourages iterative development, with each sprint building on the foundation laid by the previous ones. This sprint-based approach also facilitates consistent documentation, creating a comprehensive record of the project’s evolution. By focusing on a single feature set per sprint, we can maintain a clear trajectory, from the initial setup to implementing advanced features like filters and animations.
+
+Overall Plan:
+
+The project is structured in the following sprints, with each sprint representing a critical stage in the development cycle:
 
     Sprint 1: Set up the project structure and placeholders in HTML for the calendar, navigation, and event detail views.
     Sprint 2: Build a static calendar view, displaying the days of the current month in a grid format.
@@ -201,5 +210,8 @@ Event detail:
     - add styling to show the  vs format ( HOMETEAM   vs  AWAYTEAM ) with all other detail below them
     
 Homepage:
-    - add SportRadar logo from subject in background in fainted 
+    - add SportRadar logo in background of calendat grid.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 

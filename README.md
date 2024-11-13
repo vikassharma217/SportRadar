@@ -6,8 +6,7 @@ Project Overview
 A sports event calendar web app that allows users to view, interact with, and add sports events. Built with HTML, CSS, and JavaScript, the app features a responsive calendar view, event detail page, and a form for adding new events.
 Prerequisites
 
-    A modern web browser (Chrome, Firefox, Safari) for running the project.
-    (Optional) A local server for testing (e.g., Live Server extension in VS Code).
+  VS Code with live Server extension to run the code.
 
 Getting Started
 
@@ -23,23 +22,13 @@ Getting Started
             Right-click on index.html and select Open with Live Server.
             This will start a local development server and open the project in your default browser, allowing you to see changes in real-time.
 
-        Using Python’s Built-in HTTP Server
-            This option works if you have Python installed.
-            In the terminal, navigate to the project folder:
-                        cd SportRadar
-            Start a simple HTTP server using one of the following commands:
-            For Python 3:
-                        python3 -m http.server 8000
-            For Python 2:
-                        python -m SimpleHTTPServer 8000
-            Open your browser and go to http://localhost:8000/index.html to view the project.
-
 File Structure
 
     index.html: The main HTML file.
     styles/: Contains styles.css for styling the calendar and other elements.
-    scripts/: JavaScript files for calendar logic, event handling, and form interactions.
+    scripts/: JavaScript files for calendar logic, event handling, form interactions and main.js.
     data/: JSON data file with mock sports event data (sportData.json).
+    resources/: sportRadar.jpeg image for watermark on calendar grid.
     README.md: Project documentation (this file).
     approach.md: Additional documentation on project approach, sprint goals, and decisions.
 
@@ -48,10 +37,12 @@ Technology Stack
     HTML/CSS: Basic structure and styling.
     JavaScript: Handles calendar rendering, event data loading, and user interactions.
     JSON: Data format for storing and retrieving sports event information.
+    VS Code: IDE used to write and manage the codebase.
+    Live Server: A local development server for previewing the application, particularly usesful for loading JSON data seamlessly.
+    ChatGPT: Assist in enhancing code quality, providing suggestions, and troubleshooting issues to streamline development.
 
 Run Instructions
 
-    Simply open index.html in a browser to view the application.
-    For dynamic updates during development, use a live server.
+    Open index.html with Live Server extension on VS Code.
 
 
