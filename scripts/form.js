@@ -46,5 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
         eventForm.reset();
         formFeedback.textContent = "Event added successfully!";
         formFeedback.style.display = 'block';
+
+         // Automatically hide the feedback message after 3 seconds
+         setTimeout(() => {
+            formFeedback.style.display = 'none';
+        }, 3000); // 3000 milliseconds 
     });
 });

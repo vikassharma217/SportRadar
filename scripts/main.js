@@ -1,5 +1,3 @@
-// main.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const calendarSection = document.getElementById('calendar');
     const addEventSection = document.getElementById('add-event');
